@@ -1,0 +1,9 @@
+{% extends "matcher_ui/base.html" %}
+{% block title %}Submit Job Posting{% endblock %}
+{% block content %}
+  <h2>Find GitHub Projects for Your Job</h2>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Find Matching Projects</button>
+  </form>
+{% endblock %}

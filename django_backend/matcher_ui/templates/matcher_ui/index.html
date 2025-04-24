@@ -1,0 +1,12 @@
+{% extends "matcher_ui/base.html" %}
+{% block title %}Home - Project & Job Matcher{% endblock %}
+{% block content %}
+  <section>
+    <h1>AI-Powered GitHub Project & Job Matching</h1>
+    <p>Match your GitHub projects with job opportunities or find candidates for your job postings.</p>
+    <div>
+      <a class="btn" href="{% url 'matcher_ui_project' %}">Find Jobs for Projects</a>
+      <a class="btn" href="{% url 'matcher_ui_job' %}">Find Projects for Jobs</a>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "matcher_ui/base.html" %}
+{% block title %}Match Results{% endblock %}
+{% block content %}
+  <h2>Match Results</h2>
+  {% if results %}
+    <ul>
+      {% for r in results %}
+        <li>
+          <strong>{{ r.title }}</strong> ({{ r.type }}) — Score: {{ r.matchScore }}%
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No match results available yet. Submit a GitHub repository or job posting to get started.</p>
+  {% endif %}
+{% endblock %}

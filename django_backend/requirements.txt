@@ -1,0 +1,11 @@
+django
+djangorestframework
+django-cors-headers
+crewai
+langchain
+langchain-google-genai
+beautifulsoup4
+requests
+python-dotenv
+gunicorn
+spacy

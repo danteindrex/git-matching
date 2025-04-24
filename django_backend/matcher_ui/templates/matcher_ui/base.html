@@ -1,0 +1,24 @@
+{% load static %}
+...
+<link rel="stylesheet" href="{% static 'matcher_ui/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}AI Project-Job Matcher{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'matcher_ui/style.css' %}">
+</head>
+<body>
+  <nav>
+    <a href="{% url 'matcher_ui_index' %}">Home</a>
+    <a href="{% url 'matcher_ui_project' %}">Find Jobs for Projects</a>
+    <a href="{% url 'matcher_ui_job' %}">Find Projects for Jobs</a>
+  </nav>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <p>© 2024 GitHub-Job Matcher. Powered by CrewAI and Django.</p>
+  </footer>
+</body>
+</html>

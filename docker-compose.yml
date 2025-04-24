@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./django_backend
+    ports:
+      - "8001:8000"
+    environment:
+      - DEBUG=True
+      - DJANGO_SECRET_KEY=your-secret-key-here
+      - GITHUB_API_KEY=${GITHUB_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - SCRAPER_API_KEY=${SCRAPER_API_KEY}
+    volumes:
+      - ./django_backend:/app
+    restart: unless-stopped
+
+  frontend:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8001
+    depends_on:
+      - backend
+    restart: unless-stopped
