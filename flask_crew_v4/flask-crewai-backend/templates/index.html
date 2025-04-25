@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Matcher Dashboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        .loading {
+            display: none;
+            margin-left: 10px;
+        }
+        .pagination {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            align-items: center;
+        }
+        .pagination input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        .tab.active {
+            border-bottom: 2px solid #3498db;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Matcher Dashboard</h1>
+    
+    <div class="container">
+        <div class="card">
+            <div class="tabs">
+                <div class="tab active" data-tab="jobs">Jobs</div>
+                <div class="tab" data-tab="profiles">Profiles</div>
+                <div class="tab" data-tab="matches">Matches</div>
+            </div>
+            
+            <div class="tab-content active" id="jobs-tab">
+                <div class="button-group">
+                    <button id="scrapeJobsBtn">Scrape Jobs</button>
+                    <button id="getJobsBtn">Get Jobs</button>
+                    <span id="jobsLoading" class="loading">Loading...</span>
+                </div>
+                <pre id="jobsResult">No data yet. Click a button to fetch data.</pre>
+            </div>
+            
+            <div class="tab-content" id="profiles-tab">
+                <div class="button-group">
+                    <button id="getProfilesBtn">Get Profiles</button>
+                    <span id="profilesLoading" class="loading">Loading...</span>
+                </div>
+                <pre id="profilesResult">No data yet. Click a button to fetch data.</pre>
+            </div>
+            
+            <div class="tab-content" id="matches-tab">
+                <div class="button-group">
+                    <button id="matchProfilesBtn">Run Matching</button>
+                    <button id="getMatchesBtn">Get Matches</button>
+                    <span id="matchesLoading" class="loading">Loading...</span>
+                </div>
+                <div class="pagination">
+                    <label>Page:</label>
+                    <input type="number" id="pageInput" value="1" min="1">
+                    <label>Per Page:</label>
+                    <input type="number" id="perPageInput" value="10" min="1" max="100">
+                </div>
+                <pre id="matchesResult">No data yet. Click a button to fetch data.</pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>

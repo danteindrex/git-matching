@@ -1,5 +1,4 @@
-from crewai import Agent, Task, Crew, Process
-from langchain_google_genai import ChatGoogleGenerativeAI
+from crewai import Agent, Task, Crew, Process,LLM
 from langchain.tools import tool
 import requests
 import base64
@@ -14,7 +13,8 @@ from django.utils import timezone
 
 # Initialize Gemini LLM
 gemini_api_key = settings.GEMINI_API_KEY
-gemini_llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=gemini_api_key)
+gemini_llm = LLM(model="gemini-pro",
+                  google_api_key=gemini_api_key)
 
 class GitHubScraper:
     def __init__(self, github_token=None):
